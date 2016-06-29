@@ -134,3 +134,12 @@ pcsc.on('reader', function(reader) {
 pcsc.on('error', function(err) {
     console.log('Error( PCSC ): ', err);
 });
+
+/*
+var PythonShell = require('python-shell');
+ 
+PythonShell.run('my_script.py', function (err) {
+  if (err) throw err;
+  console.log('finished');
+});
+*/

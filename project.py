@@ -4,7 +4,7 @@ from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 #from openpyxl.cell import get_column_letter
 
-f=open ('nohup.out', 'r')
+f=open ('lastday.txt', 'r')
 text=f.read()
 texting=text.split('/n')
 
