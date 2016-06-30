@@ -106,13 +106,13 @@ pcsc.on('reader', function(reader) {
                                 lastRead = data.readUIntBE(0, 6, true).toString(16);
                                 
                                 //console.log('Status(', reader.name, '): Read:', data, ' toString:', lastRead);
-                                fs.writeFile(path, lastRead ,function(err){
+                                fs.writeFile(path, lastRead.toString() ,function(err){
 
                                 if (err){
                                     return console.log(err);}
                                 else{
                                 console.log("Import Data To " + path );// reading to "lastday.txt"
-                                exec("python project.py", puts);}// command line instruction 
+                                exec("python.py", puts);}// command line instruction 
                                     });
 
                                 //console.log('card id :', lastRead)

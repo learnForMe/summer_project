@@ -9,23 +9,21 @@ f=open ('lastday.txt', 'r')
 text=f.read()
 texting=text.split('/n')
 
+wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
+sheet = wb.get_sheet_by_name('Sheet1')
+ws=wb.active
+
 print texting
 
+row=1
+column=4
+
+for i in range(1,11):
+	row+=1
+	col=get_column_letter(column)
+	ws['%s%d' % (col,row)] =str(texting)
+	wb.save('testing.xlsx')
 
 
-
-
-
-wb= load_workbook("testing.xlsx")
-sheet1=wb.get_sheet_by_name('Sheet1')
-for i in range(1,12):
-	print (i, sheet1.cell(row=i, column=1).value)
-	print column_index_from_string('c')
-#print sheet1.max_column
-
-ws=wb.active
-ws['B2']="heyyyyyy"
-
-wb.save("testing.xlsx")
 
 f.closed
