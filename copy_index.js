@@ -1,8 +1,10 @@
 'use strict';
 
-var fs = require('fs');
+var fs = require('fs'); // 'fs' stands for file system, it is used for freading in file
 var path =  "lastday.txt";
-
+var sys = require('util'); // use for commandline execution
+var exec = require('child_process').exec; // use for commandline execution
+function puts(error, stdout, stderr) {sys.puts(stdout)} // use for commandline execution
 
 
 var express = require('express'),
@@ -13,7 +15,6 @@ var express = require('express'),
 var app = express(),
     pcsc = pcsc(),
     lastRead = false;
-
 
 // Enabling CORS for all routes.
 app.use(cors());
@@ -110,7 +111,8 @@ pcsc.on('reader', function(reader) {
                                 if (err){
                                     return console.log(err);}
                                 else{
-                                console.log("Import Data To " + path );}
+                                console.log("Import Data To " + path );// reading to "lastday.txt"
+                                exec("python project.py", puts);}// command line instruction 
                                     });
 
                                 //console.log('card id :', lastRead)
