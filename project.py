@@ -13,17 +13,30 @@ wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
 sheet = wb.get_sheet_by_name('Sheet1')
 ws=wb.active
 
-print texting
+#print texting
+#count=0
+#row=1
+column=1
+col=get_column_letter(column)
 
-row=1
-column=4
 
-for i in range(1,11):
+max_row = sheet.max_row
+insert_name=max_row+1
+print insert_name
+ws['%s%d' % (col,insert_name)] =str(texting)
+wb.save('testing.xlsx')
+
+# testing with row incrementing by 1
+
+
+'''
+while row:
 	row+=1
 	col=get_column_letter(column)
 	ws['%s%d' % (col,row)] =str(texting)
 	wb.save('testing.xlsx')
-
+'''
+# testing with inserting data to row incremented by 1
 
 
 f.closed

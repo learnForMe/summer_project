@@ -1,3 +1,8 @@
-import openpyxl
-wb = openpyxl.load_workbook('testing.xlsx',read_only = True, data_only = True)
-print wb.get_sheet_names()
+var sys = require('sys')
+var exec = require('child_process').exec;
+var child;
+
+var sys = require('sys')
+var exec = require('child_process').exec;
+function puts(error, stdout, stderr) { sys.puts(stdout) }
+exec("ls -la", puts);

@@ -2,8 +2,8 @@
 
 var fs = require('fs'); // 'fs' stands for file system, it is used for freading in file
 var path =  "lastday.txt";
-var sys = require('util'); // use for commandline execution
-var exec = require('child_process').exec; // use for commandline execution
+var execSync = require('child_process').execSync; // use for commandline execution
+
 function puts(error, stdout, stderr) {sys.puts(stdout)} // use for commandline execution
 
 
@@ -112,7 +112,8 @@ pcsc.on('reader', function(reader) {
                                     return console.log(err);}
                                 else{
                                 console.log("Import Data To " + path );// reading to "lastday.txt"
-                                exec("python.py", puts);}// command line instruction 
+                                var code = execSync('python project.py');
+                                console.log('return code' + code);}// command line instruction 
                                     });
 
                                 //console.log('card id :', lastRead)
