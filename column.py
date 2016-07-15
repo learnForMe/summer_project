@@ -13,11 +13,16 @@ from openpyxl.utils import get_column_letter, column_index_from_string
 #column=4
 def search_Student (x):
 	count =0
+	first_time =1
 	for row in sheet.iter_rows():
 		for cell in row:
 			data = cell.value
 			#print data
 			if data == str(texting):
+				stop_by= ws.cell('%s%d' % (col3,max_row)).value
+				#print d
+				ws['%s%d' % (col3,max_row)] = stop_by+1
+				wb.save('testing.xlsx')
 				count+=1
 				
 	if count< 1:
@@ -25,17 +30,18 @@ def search_Student (x):
 		student_name=raw_input("Enter Name -> ")
 		ws['%s%d' % (col2,insert_name)] =str(student_name)
 		ws['%s%d' % (col,insert_name)] =str(texting)
-
+		ws['%s%d' % (col3,insert_name)] =first_time
 		wb.save('testing.xlsx')
 	else:
 		print "Welcome Back!"
+
 		return data
 
 
 
-def one_day_increment (y):
-	max_col=sheet.max_col
-	#day=
+#def occurance (y):
+	
+	
 
 f=open ('lastday.txt', 'r')
 text=f.read()
