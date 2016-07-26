@@ -1,5 +1,8 @@
 'use strict';
 
+var PythonShell = require('python-shell');
+//var pyshell = new PythonShell('luck.py');
+
 var fs = require('fs'); // 'fs' stands for file system, it is used for freading in file
 var path =  "lastday.txt";
 var execSync = require('child_process').execSync; // use for commandline execution
@@ -112,8 +115,22 @@ pcsc.on('reader', function(reader) {
                                     return console.log(err);}
                                 else{
                                 console.log("Import Data To " + path );// reading to "lastday.txt"
-                                var code = execSync('python project.py');
-                                console.log('return code' + code);}// command line instruction 
+
+                            
+                                /*
+                            PythonShell.run('luck.py', function (err) {
+                             if (err) throw err;
+                             console.log('finished');
+                            });
+                            */
+
+
+
+
+
+                              var code = execSync('python luck.py');
+                               console.log('return code' + code);
+                                }// command line instruction 
                                     });
 
                                 //console.log('card id :', lastRead)
