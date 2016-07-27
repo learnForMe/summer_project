@@ -1,4 +1,7 @@
-"""Smartcard CardRequest.
+"""Smartcard CardRequest(Modified by Gary Tsai).
+
+__author__ = Gary Tsai and Freddy Velez
+For Veterans Lounge of John Jay College
 
 __author__ = "http://www.gemalto.com"
 
@@ -31,22 +34,15 @@ from openpyxl import load_workbook
 from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
+from openpyxl.styles import Font
 import re
 import os
-import sys
-def remove_space(z):
-    no_space=re.sub(r'[\s+]',"",z)
-    return no_space
 
 
 
 def remove(y):
     
     cell_location=re.sub(r'[\D]','',y)
-    #cell_location=re.sub(r'>','',cell_location)
-    #cell_location=re.sub(r'\D','',cell_location)
-
-    #cell_location=re.sub(r'[< Cell Sheet1]','',cell_location)
     return cell_location
 
 def search_Student (x):
@@ -60,15 +56,14 @@ def search_Student (x):
                 cell = str(cell)
                 cool=int(remove(cell))
                 stop_by= ws.cell('%s%d' % (col3,cool)).value
-               # print (cool)
+                #print (stop_by)
                 
                 ws['%s%d' % (col3,cool)] = stop_by+1
                 wb.save('testing.xlsx')
                 count+=1
               
     if count< 1:
-        sys.stdout.write('\a\a\a\a\a\a')
-        sys.stdout.flush()
+        print ('\a\a\a\a\a\a')
         os.system ('clear')
         os.system ('echo "New Student"')
         #print ("This Student is NEW")
@@ -80,11 +75,29 @@ def search_Student (x):
         ws['%s%d' % (col3,insert_name)] =first_time
         wb.save('testing.xlsx')
     else:
-       
+        #print('\a\a')
         again=ws.cell('%s%d' % (col2,cool)).value
         print ("Welcome Back!", again)
+        #os.system ('say Hello%s' % again)  # use for prank (aka April Foo)
+  
 
-        return data
+def formular():
+    worksheet= wb.get_sheet_names()
+    #print (worksheet)
+    if "Monthly_STAT" not in worksheet:
+        wb.create_sheet (index=2, title="Monthly_STAT")
+        monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
+    else:
+        monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
+
+    italic24Font = Font(size=18, italic=True)
+    monthly_STAT['a3'].font=italic24Font
+    monthly_STAT['a3']= "Total student visited this month: "
+    monthly_STAT['c3'].font=italic24Font
+    monthly_STAT['c3']= '=SUM(sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
+    #ws['%s%d' % (formular_col,formular_row)]= '=SUM(%s2:%s%d)' % (formular_col,formular_col,max_row)
+    wb.save('testing.xlsx')
+
 
 class CardRequest(object):
     """A CardRequest is used for waitForCard() invocations and specifies what
@@ -143,31 +156,29 @@ while __name__ == '__main__':
     cs.connection.connect()
 
     SELECT = [0xFF, 0xCA, 0x00, 0x00, 0x00]
-    apdu = SELECT
 
-    response, sw1, sw2 = cs.connection.transmit( apdu )
+    response, sw1, sw2 = cs.connection.transmit( SELECT)
     
    # print ('response: ', response, ' status words: ', "%x %x" % (sw1, sw2))
-    tagid = toHexString(response).replace(' ','')
-    
-    id = tagid
-    texting = id
-
-   # print(" UID is",id)
-
+    texting = toHexString(response).replace(' ','')
 
     wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
     sheet = wb.get_sheet_by_name('Sheet')
+    #monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
     ws=wb.active
 
     col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
     col2=get_column_letter(2)# use for second column (Student name)
     col3=get_column_letter(3)#use for third column(occurance)
-
+    max_col = sheet.max_column
+    formular_col= get_column_letter(max_col)
     max_row = sheet.max_row
     insert_name=max_row+1
-    
-    search_Student(texting)         
+    formular_row=max_row
+
+    #function calling
+    search_Student(texting)  
+    formular() 
     #wb.save('testing.xlsx')
     cs.connection.disconnect()
    
