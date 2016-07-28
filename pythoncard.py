@@ -37,6 +37,7 @@ from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
 import re
 import os
+import smtplib
 
 
 
@@ -78,7 +79,7 @@ def search_Student (x):
         #print('\a\a')
         again=ws.cell('%s%d' % (col2,cool)).value
         print ("Welcome Back!", again)
-        #os.system ('say Hello%s' % again)  # use for prank (aka April Foo)
+        os.system ('say What is up%s' % again)  # use for prank (aka April Foo)
   
 
 def formular():
