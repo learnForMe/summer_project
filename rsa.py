@@ -4,7 +4,7 @@ from array import *
 
 #Author: Gary Tsai
 
-file = open('.AllEng.txt', 'r')
+file = open('/Users/garytsai/Desktop/email:passwd/.AllEng.txt', 'r')
 s=file.read()
 k=s.split()
 
