@@ -35,6 +35,7 @@ from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
+from header import header
 import re
 import os
 import smtplib
@@ -145,7 +146,10 @@ class CardRequest(object):
         """Wait for card insertion or removal."""
         return self.pcsccardrequest.waitforcardevent()
 
-
+header()
+col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
+col2=get_column_letter(2)# use for second column (Student name)
+col3=get_column_letter(3)#use for third column(occurance)
 while __name__ == '__main__':
     """Small sample illustrating the use of CardRequest.py."""
 
@@ -165,12 +169,8 @@ while __name__ == '__main__':
 
     wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
     sheet = wb.get_sheet_by_name('Sheet')
-    #monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
+    
     ws=wb.active
-
-    col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
-    col2=get_column_letter(2)# use for second column (Student name)
-    col3=get_column_letter(3)#use for third column(occurance)
     max_col = sheet.max_column
     formular_col= get_column_letter(max_col)
     max_row = sheet.max_row
