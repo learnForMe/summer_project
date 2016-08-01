@@ -76,10 +76,10 @@ def search_Student (x):
         ws['%s%d' % (col3,insert_name)] =first_time
         wb.save('testing.xlsx')
     else:
-        #print('\a\a')
+        print('\a\a')
         again=ws.cell('%s%d' % (col2,cool)).value
         print ("Welcome Back!", again)
-        os.system ('say What is up%s' % again)  # use for prank (aka April Foo)
+        #os.system ('say What is up%s' % again)  # use for prank (aka April Foo)
   
 
 def formular():
@@ -93,7 +93,7 @@ def formular():
 
     italic24Font = Font(size=18, italic=True)
     monthly_STAT['a3'].font=italic24Font
-    monthly_STAT['a3']= "Total student visited this month: "
+    monthly_STAT['a3']= "Total visits this month:"
     monthly_STAT['c3'].font=italic24Font
     monthly_STAT['c3']= '=SUM(sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
     #ws['%s%d' % (formular_col,formular_row)]= '=SUM(%s2:%s%d)' % (formular_col,formular_col,max_row)
