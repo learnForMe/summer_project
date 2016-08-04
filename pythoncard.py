@@ -26,7 +26,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 """
 
 from __future__ import print_function
-from card_exam import inspect_card
 from smartcard.CardType import ATRCardType
 from smartcard.pcsc.PCSCCardRequest import PCSCCardRequest
 from smartcard.util import toHexString , toBytes
@@ -40,6 +39,7 @@ from header import header
 import alert
 import re
 import os
+import time
 import smtplib
 
 
@@ -173,6 +173,9 @@ while __name__ == '__main__':
    # print ('response: ', response, ' status words: ', "%x %x" % (sw1, sw2))
     texting = toHexString(response).replace(' ','')
     if card == cardtype:
+        print (alert.go)
+        time.sleep(3)
+        os.system("clear")
         wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
         sheet = wb.get_sheet_by_name('Sheet')
         ws=wb.active
