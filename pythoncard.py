@@ -35,8 +35,12 @@ from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
+from header import header
+from art import art_schedule
+import alert
 import re
 import os
+import time
 import smtplib
 
 
@@ -69,17 +73,18 @@ def search_Student (x):
         os.system ('echo "New Student"')
         #print ("This Student is NEW")
         student_name= raw_input("Enter Name -> ")
-        print (student_name," added to database")
+        print (student_name,"added to database")
         
         ws['%s%d' % (col2,insert_name)] =str(student_name)
         ws['%s%d' % (col,insert_name)] =str(x)
         ws['%s%d' % (col3,insert_name)] =first_time
         wb.save('testing.xlsx')
     else:
-        #print('\a\a')
+        print ('\a')
         again=ws.cell('%s%d' % (col2,cool)).value
         print ("Welcome Back!", again)
-        os.system ('say Hellooo%s' % again)  # use for prank (aka April Foo)
+        #os.system ('say What is up%s' % again)  # use for prank (aka April Foo)
+
   
 
 def formular():
@@ -93,7 +98,7 @@ def formular():
 
     italic24Font = Font(size=18, italic=True)
     monthly_STAT['a3'].font=italic24Font
-    monthly_STAT['a3']= "Total student visited this month: "
+    monthly_STAT['a3']= "Total visits this month:"
     monthly_STAT['c3'].font=italic24Font
     monthly_STAT['c3']= '=SUM(sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
     #ws['%s%d' % (formular_col,formular_row)]= '=SUM(%s2:%s%d)' % (formular_col,formular_col,max_row)
@@ -145,41 +150,52 @@ class CardRequest(object):
         """Wait for card insertion or removal."""
         return self.pcsccardrequest.waitforcardevent()
 
+header()
+col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
+col2=get_column_letter(2)# use for second column (Student name)
+col3=get_column_letter(3)#use for third column(occurance)
 
 while __name__ == '__main__':
     """Small sample illustrating the use of CardRequest.py."""
 
-    #cardtype = ATRCardType( toBytes("3b 8f 80 01 80 4f 0c a0 00 00 03 06 40 00 00 00 00 00 00 28"))
-    print('\t''------insert card to SIGN IN-------')
+    cardtype = "3B 8F 80 01 80 4F 0C A0 00 00 03 06 40 00 00 00 00 00 00 28"
+    print('\t''------Tap card to SIGN IN-------')
+
    # cr = CardRequest(timeout=10, cardType=cardtype)
     cr = CardRequest(timeout=None, newcardonly=True)
     cs = cr.waitforcard()
     cs.connection.connect()
-
+    card = toHexString(cs.connection.getATR())
+    #print (cardtype)
+    #print (card)
     SELECT = [0xFF, 0xCA, 0x00, 0x00, 0x00]
 
     response, sw1, sw2 = cs.connection.transmit( SELECT)
     
    # print ('response: ', response, ' status words: ', "%x %x" % (sw1, sw2))
     texting = toHexString(response).replace(' ','')
-
-    wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
-    sheet = wb.get_sheet_by_name('Sheet')
-    #monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
-    ws=wb.active
-
-    col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
-    col2=get_column_letter(2)# use for second column (Student name)
-    col3=get_column_letter(3)#use for third column(occurance)
-    max_col = sheet.max_column
-    formular_col= get_column_letter(max_col)
-    max_row = sheet.max_row
-    insert_name=max_row+1
-    formular_row=max_row
-
-    #function calling
-    search_Student(texting)  
-    formular() 
-    #wb.save('testing.xlsx')
-    cs.connection.disconnect()
+    if card == cardtype:
+        art_schedule()
+        time.sleep(2)
+        os.system("clear")
+        wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
+        sheet = wb.get_sheet_by_name('Sheet')
+        ws=wb.active
+        max_col = sheet.max_column
+        formular_col= get_column_letter(max_col)
+        max_row = sheet.max_row
+        insert_name=max_row+1
+        formular_row=max_row
+        #function calling
+        search_Student(texting)
+        formular()
+        #wb.save('testing.xlsx')
+        cs.connection.disconnect()
+    
+    else:
+        os.system ('clear')
+        print (alert.stop)
+        os.system ('say Try Again')
+        cs.connection.disconnect()
+    
    

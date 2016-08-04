@@ -1,6 +1,7 @@
 import smtplib
 import time
 from rsa import passwd 
+from add_column import add_column
 import datetime
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
@@ -14,13 +15,13 @@ hashed="3fde674e736ee4681b82ed8df2c9ee60e4f58391814aaf8908f820257ca94d59cd730d86
 month="{:%B %Y}".format(datetime.date.today())
  
 fromaddr = "sender's email"
-toaddr = "receiver's email"
+toaddr = "Receiver's email"
 msg = MIMEMultipart()
 msg['From'] = fromaddr
 msg['To'] = toaddr
 msg['Subject'] = "Vet Lounge Traffic of %s" % month
  
-body = "test 1"
+body = "DO NOT reply this email. This is an automatic generated email with traffic data for veterans lounge. Should you have any question, please email john.doe@jjay.cuny.edu."
 msg.attach(MIMEText(body, 'plain'))
 
 filename = "%s.xlsx" %month
@@ -38,3 +39,4 @@ server.login(fromaddr, "%s" % passwd(hashed))
 text = msg.as_string()
 server.sendmail(fromaddr, toaddr, text)
 server.quit()
+add_column()
