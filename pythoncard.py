@@ -70,7 +70,8 @@ def search_Student (x):
     if count< 1:
         print ('\a\a\a\a\a\a')
         os.system ('clear')
-        os.system ('echo "New Student"')
+        #os.system ('echo "New Student"')
+        print ("NEW STUDENT\n")
         #print ("This Student is NEW")
         student_name= raw_input("Enter Name -> ")
         print (student_name,"added to database")
@@ -96,7 +97,7 @@ def formular():
     else:
         monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
 
-    italic24Font = Font(size=18, italic=True)
+    italic24Font = Font(size=15, italic=True)
     monthly_STAT['a3'].font=italic24Font
     monthly_STAT['a3']= "Total visits this month:"
     monthly_STAT['c3'].font=italic24Font
@@ -175,9 +176,9 @@ while __name__ == '__main__':
    # print ('response: ', response, ' status words: ', "%x %x" % (sw1, sw2))
     texting = toHexString(response).replace(' ','')
     if card == cardtype:
-        art_schedule()
-        time.sleep(2)
-        os.system("clear")
+        #$art_schedule()
+        #time.sleep(2)
+        #os.system("clear")
         wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
         sheet = wb.get_sheet_by_name('Sheet')
         ws=wb.active
