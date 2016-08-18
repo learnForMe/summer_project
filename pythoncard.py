@@ -35,7 +35,7 @@ from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
-from header import header
+#from header import header
 from art import art_schedule
 import alert
 import re
@@ -151,7 +151,7 @@ class CardRequest(object):
         """Wait for card insertion or removal."""
         return self.pcsccardrequest.waitforcardevent()
 
-header()
+#header()
 col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
 col2=get_column_letter(2)# use for second column (Student name)
 col3=get_column_letter(3)#use for third column(occurance)
