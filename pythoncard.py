@@ -35,6 +35,8 @@ from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
+from monthly_stat_row import add_month
+from formular import formular
 #from header import header
 from art import art_schedule
 import alert
@@ -88,23 +90,6 @@ def search_Student (x):
 
   
 
-def formular():
-    worksheet= wb.get_sheet_names()
-    #print (worksheet)
-    if "Monthly_STAT" not in worksheet:
-        wb.create_sheet (index=2, title="Monthly_STAT")
-        monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
-    else:
-        monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
-
-    italic24Font = Font(size=15, italic=True)
-    monthly_STAT['a3'].font=italic24Font
-    monthly_STAT['a3']= "Total visits this month:"
-    monthly_STAT['c3'].font=italic24Font
-    monthly_STAT['c3']= '=SUM(sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
-    #ws['%s%d' % (formular_col,formular_row)]= '=SUM(%s2:%s%d)' % (formular_col,formular_col,max_row)
-    wb.save('testing.xlsx')
-
 
 class CardRequest(object):
     """A CardRequest is used for waitForCard() invocations and specifies what
@@ -150,12 +135,14 @@ class CardRequest(object):
     def waitforcardevent(self):
         """Wait for card insertion or removal."""
         return self.pcsccardrequest.waitforcardevent()
-
-#header()
+wb=load_workbook('testing.xlsx', data_only = True)
+ws=wb.active
+worksheet= wb.get_sheet_names()
+sheet = wb.get_sheet_by_name('Sheet')
 col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
 col2=get_column_letter(2)# use for second column (Student name)
 col3=get_column_letter(3)#use for third column(occurance)
-
+os.system ("python formular.py")
 while __name__ == '__main__':
     """Small sample illustrating the use of CardRequest.py."""
 
@@ -167,8 +154,6 @@ while __name__ == '__main__':
     cs = cr.waitforcard()
     cs.connection.connect()
     card = toHexString(cs.connection.getATR())
-    #print (cardtype)
-    #print (card)
     SELECT = [0xFF, 0xCA, 0x00, 0x00, 0x00]
 
     response, sw1, sw2 = cs.connection.transmit( SELECT)
@@ -176,21 +161,17 @@ while __name__ == '__main__':
    # print ('response: ', response, ' status words: ', "%x %x" % (sw1, sw2))
     texting = toHexString(response).replace(' ','')
     if card == cardtype:
-        #$art_schedule()
-        #time.sleep(2)
-        #os.system("clear")
-        wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
-        sheet = wb.get_sheet_by_name('Sheet')
-        ws=wb.active
+        
         max_col = sheet.max_column
         formular_col= get_column_letter(max_col)
         max_row = sheet.max_row
         insert_name=max_row+1
-        formular_row=max_row
-        #function calling
+        
         search_Student(texting)
-        formular()
+        #formular()
         #wb.save('testing.xlsx')
+        formular()
+        add_month()
         cs.connection.disconnect()
     
     else:
