@@ -38,6 +38,7 @@ from openpyxl.styles import Font
 from header import header
 from search_student import search_Student
 from art import art_schedule
+from formular import formular
 import alert
 import re
 import os
@@ -115,7 +116,7 @@ while __name__ == '__main__':
         header()
         search_Student(texting)
         cs.connection.disconnect()
-    
+        formular()
     else:
         os.system ('clear')
         print (alert.stop)

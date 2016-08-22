@@ -24,9 +24,7 @@ def add_column():
 	month="{:%B %Y}".format(datetime.date.today())
 	#print new_col
 	#sheet['%s1' % curr_col] = month
-	if sheet.cell('%s1' % curr_col).value == next_month and sheet.cell('%s1' % pre_col).value == None:
-		sheet['%s1' % pre_col] = month
-	else:
+	if sheet.cell('%s1' % curr_col).value == month :
 		sheet['%s1' % new_col] = next_month
 	
 	wb.save('testing.xlsx')

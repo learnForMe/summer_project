@@ -18,7 +18,7 @@ def formular():
         wb.create_sheet (index=2, title="Monthly_STAT")
         monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
         monthly_STAT.column_dimensions['A'].width = 25
-        max_col=sheet.max_column-1
+        max_col=sheet.max_column
         max_row = sheet.max_row
         stat_row =monthly_STAT.max_row
         formular_col=get_column_letter(max_col)
@@ -29,7 +29,7 @@ def formular():
     else:
         monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
         monthly_STAT.column_dimensions['A'].width = 25
-        max_col=sheet.max_column-1
+        max_col=sheet.max_column
         max_row = sheet.max_row
         stat_row =monthly_STAT.max_row
         formular_col=get_column_letter(max_col)
