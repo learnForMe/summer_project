@@ -9,7 +9,7 @@ from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
 
 def formular():
-    wb=load_workbook('testing.xlsx')
+    wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
     worksheet= wb.get_sheet_names()
     wb.active
     sheet = wb.get_sheet_by_name('Sheet')
