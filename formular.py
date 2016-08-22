@@ -8,6 +8,7 @@ from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
 
+
 def formular():
     wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
     worksheet= wb.get_sheet_names()
@@ -22,6 +23,7 @@ def formular():
         stat_row =monthly_STAT.max_row
         formular_col=get_column_letter(max_col)
         monthly_STAT['b%s' % stat_row]= '=SUM(Sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
+
         wb.save('testing.xlsx')
 
     else:
@@ -34,6 +36,6 @@ def formular():
         monthly_STAT['b%s' % stat_row]= '=SUM(Sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
         wb.save('testing.xlsx')
 
-formular()
+
 
 

@@ -11,17 +11,23 @@ from openpyxl.utils import coordinate_from_string
 def add_column():
 	wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
 	sheet = wb.get_sheet_by_name('Sheet')
-	ws=wb.active
+	wb.active
 	curr_col = sheet.max_column
 	col_count = sheet.max_column
 	col_count += 1
+	pre_col =sheet.max_column -1
 	curr_col=get_column_letter(curr_col)
+	pre_col =get_column_letter(pre_col)
 	new_col= get_column_letter(col_count)
 	today = datetime.date.today()
 	next_month= "{:%B %Y}".format(today + timedelta(mdays[today.month]))
 	month="{:%B %Y}".format(datetime.date.today())
 	#print new_col
-	ws['%s1' % curr_col] = month
-	ws['%s1' % new_col] = next_month
+	#sheet['%s1' % curr_col] = month
+	if sheet.cell('%s1' % curr_col).value == next_month and sheet.cell('%s1' % pre_col).value == None:
+		sheet['%s1' % pre_col] = month
+	else:
+		sheet['%s1' % new_col] = next_month
+	
 	wb.save('testing.xlsx')
 

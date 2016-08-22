@@ -19,7 +19,7 @@ def search_Student (x):
     sheet = wb.get_sheet_by_name('Sheet')
     max_row = sheet.max_row
     insert_name=max_row+1
-    max_col=sheet.max_column-1
+    max_col=sheet.max_column
     col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
     col2=get_column_letter(2)# use for second column (Student name)
     col3=get_column_letter(max_col)#use for third column(occurance)
@@ -33,6 +33,8 @@ def search_Student (x):
                 cell = str(cell)
                 cool=int(remove(cell))
                 stop_by= sheet.cell('%s%d' % (col3,cool)).value
+                if stop_by == None:
+                    stop_by = 0
                 #print (stop_by)
                 
                 sheet['%s%d' % (col3,cool)] = stop_by+1

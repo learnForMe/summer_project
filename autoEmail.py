@@ -9,18 +9,19 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from formular import formular
+from monthly_stat_row import add_month
 
 
 hashed="3fde674e736ee4681b82ed8df2c9ee60e4f58391814aaf8908f820257ca94d59cd730d865e38c1e6e79e6a7e8dc10afaddb83c170bd1e952cfd44160b9df9eef"
 #passw= passwd(hashed)
 
-header()
 add_column()
+add_month()
 formular()
 month="{:%B %Y}".format(datetime.date.today())
  
-fromaddr = "sender's email"
-toaddr = "recevier's email"
+fromaddr = "johnjayveterans@gmail.com"
+toaddr = "yue.tsai@jjay.cuny.edu"
 #toaddr = ['rpusateri@jjay.cuny.edu', 'yue.tsai@jjay.cuny.edu', 'holland718@hotmail.com'.'bryan.williams@jjay.cuny.edu']
 msg = MIMEMultipart()
 msg['From'] = fromaddr

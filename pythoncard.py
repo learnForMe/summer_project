@@ -35,8 +35,7 @@ from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
-from monthly_stat_row import add_month
-from formular import formular
+from header import header
 from search_student import search_Student
 from art import art_schedule
 import alert
@@ -91,7 +90,6 @@ class CardRequest(object):
         """Wait for card insertion or removal."""
         return self.pcsccardrequest.waitforcardevent()
 
-
 wb=load_workbook('testing.xlsx', data_only = True)
 wb.active
 worksheet= wb.get_sheet_names()
@@ -114,10 +112,8 @@ while __name__ == '__main__':
    # print ('response: ', response, ' status words: ', "%x %x" % (sw1, sw2))
     texting = toHexString(response).replace(' ','')
     if card == cardtype:
-        
+        header()
         search_Student(texting)
-        formular()
-        add_month()
         cs.connection.disconnect()
     
     else:
