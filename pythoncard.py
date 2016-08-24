@@ -90,7 +90,7 @@ class CardRequest(object):
     def waitforcardevent(self):
         """Wait for card insertion or removal."""
         return self.pcsccardrequest.waitforcardevent()
-
+os.system("clear")
 wb=load_workbook('testing.xlsx', data_only = True)
 wb.active
 worksheet= wb.get_sheet_names()
