@@ -121,6 +121,6 @@ while __name__ == '__main__':
         os.system ('clear')
         print (alert.stop)
         os.system ('say Try Again')
-        cs.connection.disconnect()
+       # cs.connection.disconnect()
     
    
