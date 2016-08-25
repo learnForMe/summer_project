@@ -51,17 +51,23 @@ def search_Student (x):
         #os.system ('echo "New Student"')
         print ("NEW STUDENT\n")
         #print ("This Student is NEW")
-        student_name=raw_input("Enter Name -> ")
+        student_name=input("Enter Name -> ")
         #student_name= input("Enter Name -> ")
         print (student_name + " added to database")
         
         sheet['%s%d' % (col2,insert_name)] =str(student_name)
         sheet['%s%d' % (col,insert_name)] =str(x)
         sheet['%s%d' % (col3,insert_name)] =first_time
-        print (x)
+        #print (x)
         wb.save('testing.xlsx')
     else:
         print ('\a')
         again=sheet.cell('%s%d' % (col2,cool)).value
+        if again == None:
+            student_name=input("Enter Name -> ")
+            sheet['%s%d' % (col2,cool)] = str(student_name)
+            again = sheet.cell('%s%d' % (col2,cool)).value
+            wb.save('testing.xlsx')
+
         print ("Welcome Back! "+ again)
         #os.system ('say What is up%s' % again)  # use for prank (aka April Foo)
