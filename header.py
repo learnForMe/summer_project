@@ -18,11 +18,14 @@ def header():
 	today = datetime.date.today()
 	sheet['a1'].font=italic24Font
 	sheet['b1'].font=italic24Font
+	sheet['c1'].font=italic24Font
 	sheet.column_dimensions['A'].width = 20
 	sheet.column_dimensions['B'].width = 20
+	sheet.column_dimensions['C'].width = 20
 	sheet['a1']="UID"
 	sheet['b1']="Name"
-	start_col =3
+	sheet['c1']="Email"
+	start_col =4
 	start_month=get_column_letter(start_col)
 	sheet['%s1' % start_month] = "August 2016"
 	
@@ -35,4 +38,4 @@ def header():
 	sheet.column_dimensions['%s' % this_month].width = 20
 	wb.save('testing.xlsx')
 
-
+header()
