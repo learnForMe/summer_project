@@ -122,6 +122,6 @@ while __name__ == '__main__':
         print (alert.stop)
         os.system ('say Try Again')
         cs = cr.waitforcard()
-        #cs.connection.disconnect()
+        cs.connection.disconnect()
     
    
