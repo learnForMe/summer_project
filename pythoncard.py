@@ -115,6 +115,9 @@ while __name__ == '__main__':
     if card == cardtype:
         header()
         search_Student(texting)
+        #print (alert.go)
+        #time.sleep(2.5)
+        #os.system ('clear')
         cs.connection.disconnect()
         formular()
     else:
