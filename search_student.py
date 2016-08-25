@@ -56,7 +56,8 @@ def search_Student (x):
         student_name=input("Enter Name -> ")
         student_email=input("Enter Student's email -> ")
         #student_name= input("Enter Name -> ")
-        print (student_name + " added to database and email "+ student_email)
+        print (student_name + " added to database")
+        print(student_email + " added to database")
         
         sheet['%s%d' % (col2,insert_name)] =str(student_name)
         sheet['%s%d' % (col,insert_name)] =str(x)
@@ -68,7 +69,8 @@ def search_Student (x):
         print ('\a')
         again=sheet.cell('%s%d' % (col2,cool)).value
         email=sheet.cell('%s%d' % (col3,cool)).value
-        if again == None or again == None and email == None:
+        if again == None or  email == None:
+            print ('\a\a\a\a\a\a')
             student_name=input("Enter Name -> ")
             student_email=input("Enter Student's email -> ")
             sheet['%s%d' % (col2,cool)] = str(student_name)
