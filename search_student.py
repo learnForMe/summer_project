@@ -85,6 +85,6 @@ def search_Student (x):
             wb.save('testing.xlsx')
 
         print ("Welcome Back! "+ again)
-        #os.system ('say What is up%s' % again)  # use for prank (aka April Foo)
-testing = "saergetsrt"
-search_Student(testing)
+
+        #os.system ('say whatever you want %s' % again)  # use for prank (aka April Foo)
+
