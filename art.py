@@ -23,4 +23,4 @@ def art_schedule():
 	date_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
 	for date in date_generated:
-		print (alert.johnjay)
+		print (alert.go)
