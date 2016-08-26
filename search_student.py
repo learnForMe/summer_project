@@ -7,6 +7,7 @@ from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from timer import prompt_with_timeout
+from reporting import logs
 
 
 def remove(y):
@@ -66,6 +67,7 @@ def search_Student (x):
         sheet['%s%d' % (col,insert_name)] =str(x)
         sheet['%s%d' % (col4,insert_name)] =first_time
         sheet['%s%d' % (col3,insert_name)] =str(student_email)
+        logs(x,student_name)
         #print (x)
         wb.save('testing.xlsx')
     else:
@@ -86,5 +88,5 @@ def search_Student (x):
 
         print ("Welcome Back! "+ again)
         #os.system ('say What is up%s' % again)  # use for prank (aka April Foo)
-testing = "saergetsrt"
+testing = "saeccffrgea"
 search_Student(testing)
