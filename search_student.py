@@ -1,10 +1,12 @@
 import openpyxl
 import re
 import os
+from time import sleep
 from openpyxl import load_workbook
 from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
+from timer import prompt_with_timeout
 
 
 def remove(y):
@@ -53,11 +55,12 @@ def search_Student (x):
         #os.system ('echo "New Student"')
         print ("NEW STUDENT\n")
         #print ("This Student is NEW")
-        student_name=input("Enter Name -> ")
-        student_email=input("Enter Student's email -> ")
+        #student_name=input("Enter Name -> ")
+        #student_email=input("Enter Student's email -> ")
         #student_name= input("Enter Name -> ")
-        print (student_name + " added to database")
-        print(student_email + " added to database")
+        student_name , student_email =prompt_with_timeout()
+        #print (student_name + " added to database")
+        #print(student_email + " added to database")
         
         sheet['%s%d' % (col2,insert_name)] =str(student_name)
         sheet['%s%d' % (col,insert_name)] =str(x)
@@ -69,10 +72,11 @@ def search_Student (x):
         print ('\a')
         again=sheet.cell('%s%d' % (col2,cool)).value
         email=sheet.cell('%s%d' % (col3,cool)).value
-        if again == None or  email == None:
+        if again == None or  email == None or again == "None" or  email == "None":
             print ('\a\a\a\a\a\a')
-            student_name=input("Enter Name -> ")
-            student_email=input("Enter Student's email -> ")
+            #student_name=input("Enter Name -> ")
+            #student_email=input("Enter Student's email -> ")
+            student_name , student_email =prompt_with_timeout()
             sheet['%s%d' % (col2,cool)] = str(student_name)
             sheet['%s%d' % (col3,cool)] =str(student_email)
             again = sheet.cell('%s%d' % (col2,cool)).value
@@ -82,3 +86,5 @@ def search_Student (x):
 
         print ("Welcome Back! "+ again)
         #os.system ('say What is up%s' % again)  # use for prank (aka April Foo)
+testing = "saergetsrt"
+search_Student(testing)
