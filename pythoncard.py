@@ -39,10 +39,11 @@ from header import header
 from search_student import search_Student
 from art import art_schedule
 from formular import formular
+from backup import back_up
 import alert
 import re
 import os
-import time
+import time, threading 
 import smtplib
 
 
@@ -95,6 +96,9 @@ wb=load_workbook('testing.xlsx', data_only = True)
 wb.active
 worksheet= wb.get_sheet_names()
 sheet = wb.get_sheet_by_name('Sheet')
+
+back_up()
+
 while __name__ == '__main__':
     """Small sample illustrating the use of CardRequest.py."""
 
@@ -109,7 +113,6 @@ while __name__ == '__main__':
     SELECT = [0xFF, 0xCA, 0x00, 0x00, 0x00]
 
     response, sw1, sw2 = cs.connection.transmit( SELECT)
-    
    # print ('response: ', response, ' status words: ', "%x %x" % (sw1, sw2))
     texting = toHexString(response).replace(' ','')
     if card == cardtype:

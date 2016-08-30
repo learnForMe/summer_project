@@ -54,7 +54,7 @@ def search_Student (x):
         print ('\a\a\a\a\a\a')
         os.system ('clear')
         #os.system ('echo "New Student"')
-        print ("NEW STUDENT\n")
+        print ("\tNEW STUDENT\n")
         #print ("This Student is NEW")
         #student_name=input("Enter Name -> ")
         #student_email=input("Enter Student's email -> ")
@@ -67,7 +67,7 @@ def search_Student (x):
         sheet['%s%d' % (col,insert_name)] =str(x)
         sheet['%s%d' % (col4,insert_name)] =first_time
         sheet['%s%d' % (col3,insert_name)] =str(student_email)
-        logs(x,student_name)
+        #logs(x,student_name)
         #print (x)
         wb.save('testing.xlsx')
     else:
@@ -89,8 +89,7 @@ def search_Student (x):
         print ("Welcome Back! "+ again)
 
         #os.system ('say What is up%s' % again)  # use for prank (aka April Foo)
-testing = "saeccffrgea"
-search_Student(testing)
+
 
 
       
