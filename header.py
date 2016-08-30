@@ -21,7 +21,7 @@ def header():
 	sheet['c1'].font=italic24Font
 	sheet.column_dimensions['A'].width = 20
 	sheet.column_dimensions['B'].width = 20
-	sheet.column_dimensions['C'].width = 30
+	sheet.column_dimensions['C'].width = 20
 	sheet['a1']="UID"
 	sheet['b1']="Name"
 	sheet['c1']="Email"
@@ -38,4 +38,4 @@ def header():
 	sheet.column_dimensions['%s' % this_month].width = 20
 	wb.save('testing.xlsx')
 
-header()
+
