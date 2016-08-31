@@ -3,6 +3,7 @@ import datetime
 from datetime import timedelta
 from calendar import mdays
 from openpyxl import load_workbook
+from dateutil import relativedelta
 from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
@@ -20,10 +21,12 @@ def add_column():
 	pre_col =get_column_letter(pre_col)
 	new_col= get_column_letter(col_count)
 	today = datetime.date.today()
-	next_month= "{:%B %Y}".format(today + timedelta(mdays[today.month]))
+	next_month = "{:%B %Y}".format(datetime.date.today() + relativedelta.relativedelta(months=1))
+	#next_month= "{:%B %Y}".format(today + timedelta(mdays[today.month]))
 	month="{:%B %Y}".format(datetime.date.today())
-	#print new_col
-	#sheet['%s1' % curr_col] = month
+	#print (next_month)
+	sheet['%s1' % curr_col] = month
+	
 	if sheet.cell('%s1' % curr_col).value == month :
 		sheet['%s1' % new_col] = next_month
 	

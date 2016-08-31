@@ -16,7 +16,6 @@ hashed="3fde674e736ee4681b82ed8df2c9ee60e4f58391814aaf8908f820257ca94d59cd730d86
 #passw= passwd(hashed)
 
 add_column()
-add_month()
 formular()
 month="{:%B %Y}".format(datetime.date.today())
  
