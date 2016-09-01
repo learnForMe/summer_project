@@ -32,8 +32,8 @@ body = "DO NOT reply this email. This is an automatic generated email with traff
 msg.attach(MIMEText(body, 'plain'))
 
 filename = "%s.xlsx" %month
-#attachment = open("/Users/johnjayveterans/Desktop/summer_project/testing.xlsx", "rb")
-attachment = open("/Users/garytsai/Desktop/rfid-reader-http/summer_project/testing.xlsx", "rb")
+attachment = open("/Users/johnjayveterans/Desktop/summer_project/testing.xlsx", "rb")
+#attachment = open("/Users/garytsai/Desktop/rfid-reader-http/summer_project/testing.xlsx", "rb")
  
 part = MIMEBase('application', 'octet-stream')
 part.set_payload((attachment).read())

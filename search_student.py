@@ -54,7 +54,7 @@ def search_Student (x):
         print ('\a\a\a\a\a\a')
         os.system ('clear')
         #os.system ('echo "New Student"')
-        print ("\tNEW STUDENT\n")
+        print ("\t****** NEW STUDENT ******\n")
         #print ("This Student is NEW")
         #student_name=input("Enter Name -> ")
         #student_email=input("Enter Student's email -> ")
