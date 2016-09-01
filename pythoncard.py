@@ -40,6 +40,7 @@ from search_student import search_Student
 from art import art_schedule
 from formular import formular
 from backup import back_up
+from date import check_date
 import alert
 import re
 import os
@@ -118,6 +119,7 @@ while __name__ == '__main__':
     if card == cardtype:
         header()
         search_Student(texting)
+        check_date()
         #print (alert.go)
         #time.sleep(2.5)
         #os.system ('clear')
