@@ -20,8 +20,8 @@ def header():
 	sheet['b1'].font=italic24Font
 	sheet['c1'].font=italic24Font
 	sheet.column_dimensions['A'].width = 20
-	sheet.column_dimensions['B'].width = 20
-	sheet.column_dimensions['C'].width = 20
+	sheet.column_dimensions['B'].width = 30
+	sheet.column_dimensions['C'].width = 30
 	sheet['a1']="UID"
 	sheet['b1']="Name"
 	sheet['c1']="Email"
@@ -32,10 +32,14 @@ def header():
 	curr_col = sheet.max_column
 	#print (curr_col)
 	this_month=get_column_letter(curr_col)
-	if sheet.cell('%s1' % this_month).value != month:
+	if sheet.cell('%s1' % this_month).value == None:
+		pass
+	else:
+		#print (sheet['%s1' % this_month].value)
 		sheet['%s1' % this_month] = month
 	
 	sheet.column_dimensions['%s' % this_month].width = 20
 	wb.save('testing.xlsx')
+
 
 

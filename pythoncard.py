@@ -123,6 +123,7 @@ while __name__ == '__main__':
         #os.system ('clear')
         cs.connection.disconnect()
         formular()
+
     else:
         os.system ('clear')
         print (alert.stop)
