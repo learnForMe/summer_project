@@ -23,9 +23,9 @@ def search_Student (x):
     max_row = sheet.max_row
     insert_name=max_row+1
 
-    max_col=sheet.max_column-1
-    if max_col != 4:
-        max_col=4
+    max_col=sheet.max_column
+    #if max_col != 4:
+        #max_col=4
 
     col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
     col2=get_column_letter(2)# use for second column (Student name)
