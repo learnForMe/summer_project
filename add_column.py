@@ -25,10 +25,11 @@ def add_column():
 	#next_month= "{:%B %Y}".format(today + timedelta(mdays[today.month]))
 	month="{:%B %Y}".format(datetime.date.today())
 	#print (next_month)
-	sheet['%s1' % curr_col] = month
+	#sheet['%s1' % curr_col] = month
 	
 	if sheet.cell('%s1' % curr_col).value == month :
+		sheet['%s1' % curr_col] = month
+	else:
 		sheet['%s1' % new_col] = next_month
-	
 	wb.save('testing.xlsx')
 
