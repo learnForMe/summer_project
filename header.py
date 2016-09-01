@@ -7,7 +7,7 @@ from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
-
+from dateutil import relativedelta
 
 def header():
 	italic24Font = Font(size=18, italic=False)
@@ -30,13 +30,15 @@ def header():
 	sheet['%s1' % start_month] = "August 2016"
 	
 	curr_col = sheet.max_column
+	new_col= curr_col+1
+	first = today.replace(day=1)
+	new_col = get_column_letter(new_col)
+	lastMonth = first - datetime.timedelta(days=1)
+	lastMonth= lastMonth.strftime("%B %Y")
 	#print (curr_col)
 	this_month=get_column_letter(curr_col)
-	if sheet.cell('%s1' % this_month).value == None:
-		pass
-	else:
-		#print (sheet['%s1' % this_month].value)
-		sheet['%s1' % this_month] = month
+	if sheet.cell('%s1' % this_month).value == lastMonth:
+		sheet['%s1' % new_col] = month
 	
 	sheet.column_dimensions['%s' % this_month].width = 20
 	wb.save('testing.xlsx')
