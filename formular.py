@@ -9,6 +9,7 @@ from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
 
 
+
 def formular():
     wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
     worksheet= wb.get_sheet_names()
@@ -18,23 +19,43 @@ def formular():
         wb.create_sheet (index=2, title="Monthly_STAT")
         monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
         monthly_STAT.column_dimensions['A'].width = 25
+        italic24Font = Font(size=15, italic=True)
+        monthly_STAT['a1'].font=italic24Font
+        monthly_STAT['a1']= "Month"
+        row=monthly_STAT.max_row
+        mydate = datetime.date.today()
+        this_month= mydate.strftime("%B %Y")
+        if monthly_STAT.cell('a%d' % row).value != this_month:
+            row+=1
+            monthly_STAT['a%d' % row]= this_month
+        
         max_col=sheet.max_column
         max_row = sheet.max_row
-        stat_row =monthly_STAT.max_row
         formular_col=get_column_letter(max_col)
-        monthly_STAT['b%s' % stat_row]= '=SUM(Sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
-
+        monthly_STAT['b%s' % row]= '=SUM(Sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
         wb.save('testing.xlsx')
+        
 
     else:
         monthly_STAT=wb.get_sheet_by_name('Monthly_STAT')
         monthly_STAT.column_dimensions['A'].width = 25
+        italic24Font = Font(size=15, italic=True)
+        monthly_STAT['a1'].font=italic24Font
+        monthly_STAT['a1']= "Month"
+        row=monthly_STAT.max_row
+        mydate = datetime.date.today()
+        this_month= mydate.strftime("%B %Y")
+        if monthly_STAT.cell('a%d' % row).value != this_month:
+            row+=1
+            monthly_STAT['a%d' % row]= this_month
+
         max_col=sheet.max_column
         max_row = sheet.max_row
-        stat_row =monthly_STAT.max_row
         formular_col=get_column_letter(max_col)
-        monthly_STAT['b%s' % stat_row]= '=SUM(Sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
+        monthly_STAT['b%s' % row]= '=SUM(Sheet!%s2:%s%d)' % (formular_col,formular_col,max_row)
+
         wb.save('testing.xlsx')
+        
 
 
 
