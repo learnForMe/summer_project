@@ -32,10 +32,10 @@ def add_column():
 	#print (next_month)
 	#sheet['%s1' % curr_col] = month
 	#print (lastMonth)
-	
+
+
 	if sheet.cell('%s1' % curr_col).value == month:
 		sheet['%s1' % new_col] = next_month
-	
 	
 	wb.save('testing.xlsx')
 

@@ -120,6 +120,7 @@ while __name__ == '__main__':
         header()
         search_Student(texting)
         check_date()
+        
         #print (alert.go)
         #time.sleep(2.5)
         #os.system ('clear')

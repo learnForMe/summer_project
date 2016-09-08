@@ -10,6 +10,6 @@ def back_up():
 	shutil.copy('/Users/johnjayveterans/Desktop/summer_project/testing.xlsx', '/Users/johnjayveterans/Desktop/summer_project/back_up')
 	shutil.move('/Users/johnjayveterans/Desktop/summer_project/back_up/testing.xlsx', '/Users/johnjayveterans/Desktop/summer_project/back_up/testing%s.xlsx'% time)
 	#print (interval)
-	threading.Timer(60*60, back_up).start()
+	threading.Timer(60*120, back_up).start()
 
 #back_up()
