@@ -11,7 +11,7 @@ from openpyxl.utils import coordinate_from_string
 # use crontab -e
 # 0 0 1 * *  python /Users/garytsai/Desktop/rfid-reader-http/summer_project/autoEmail.py
 def add_column():
-	wb=load_workbook('/Users/garytsai/Desktop/rfid-reader-http/summer_project/testing.xlsx')
+	wb=load_workbook('testing.xlsx')
 	sheet = wb.get_sheet_by_name('Sheet')
 	wb.active
 	curr_col = sheet.max_column
@@ -31,21 +31,11 @@ def add_column():
 	month="{:%B %Y}".format(datetime.date.today())
 	#print (next_month)
 	#sheet['%s1' % curr_col] = month
-<<<<<<< HEAD
-=======
 	#print (lastMonth)
->>>>>>> c7e05979ebb82c28f48954b08c161d03346affac
-	
-	if sheet.cell('%s1' % curr_col).value == month :
-		sheet['%s1' % curr_col] = month
-	else:
+
+
+	if sheet.cell('%s1' % curr_col).value == month:
 		sheet['%s1' % new_col] = next_month
-<<<<<<< HEAD
-=======
-	elif sheet.cell('%s1' % curr_col).value == lastMonth:
-		sheet.cell('%s1' % new_col).value = month
 	
->>>>>>> c7e05979ebb82c28f48954b08c161d03346affac
 	wb.save('testing.xlsx')
 
-add_column() 
