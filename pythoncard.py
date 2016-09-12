@@ -104,6 +104,7 @@ while __name__ == '__main__':
     """Small sample illustrating the use of CardRequest.py."""
 
     cardtype = "3B 8F 80 01 80 4F 0C A0 00 00 03 06 40 00 00 00 00 00 00 28"
+    length=10
     print('\t''------Tap card to SIGN IN-------')
 
    # cr = CardRequest(timeout=10, cardType=cardtype)
@@ -116,7 +117,8 @@ while __name__ == '__main__':
     response, sw1, sw2 = cs.connection.transmit( SELECT)
    # print ('response: ', response, ' status words: ', "%x %x" % (sw1, sw2))
     texting = toHexString(response).replace(' ','')
-    if card == cardtype:
+    word_len=len(texting)
+    if card == cardtype and length == word_len :
         header()
         search_Student(texting)
         #print (alert.go)
