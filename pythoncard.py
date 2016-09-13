@@ -39,12 +39,12 @@ from header import header
 from search_student import search_Student
 from art import art_schedule
 from formular import formular
-from backup import back_up
-from date import check_date
+from exec import exe
 import alert
 import re
 import os
 import time, threading 
+import _thread
 import smtplib
 
 
@@ -97,8 +97,8 @@ wb=load_workbook('testing.xlsx', data_only = True)
 wb.active
 worksheet= wb.get_sheet_names()
 sheet = wb.get_sheet_by_name('Sheet')
+_thread.start_new_thread(exe,())
 
-back_up()
 
 while __name__ == '__main__':
     """Small sample illustrating the use of CardRequest.py."""
@@ -119,8 +119,6 @@ while __name__ == '__main__':
     if card == cardtype:
         header()
         search_Student(texting)
-        check_date()
-        
         #print (alert.go)
         #time.sleep(2.5)
         #os.system ('clear')
@@ -133,7 +131,6 @@ while __name__ == '__main__':
         os.system ('clear')
         print (alert.stop)
         os.system ('say Try Again')
-        #cs = cr.waitforcard()
-        #cs.connection.disconnect()
+
     
    
