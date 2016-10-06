@@ -8,8 +8,7 @@ from dateutil import relativedelta
 from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
-# use crontab -e
-# 0 0 1 * *  python /Users/garytsai/Desktop/rfid-reader-http/summer_project/autoEmail.py
+
 def add_column():
 	wb=load_workbook('testing.xlsx')
 	sheet = wb.get_sheet_by_name('Sheet')
@@ -27,7 +26,6 @@ def add_column():
 	lastMonth = first - datetime.timedelta(days=1)
 	lastMonth= lastMonth.strftime("%B %Y")
 	next_month = "{:%B %Y}".format(datetime.date.today() + relativedelta.relativedelta(months=1))
-	#next_month= "{:%B %Y}".format(today + timedelta(mdays[today.month]))
 	month="{:%B %Y}".format(datetime.date.today())
 	#print (next_month)
 	#sheet['%s1' % curr_col] = month

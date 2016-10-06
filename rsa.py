@@ -4,8 +4,8 @@ from array import *
 
 #Author: Gary Tsai
 
-with open('/Users/johnjayveterans/Downloads/pyscard-1.9.4/sudoEng.txt', 'r') as sha:
-#with open('/Users/garytsai/Desktop/Fall 2015/Crypto/Portfolio/AllEng.txt', 'r') as sha:
+#with open('/Users/johnjayveterans/Downloads/pyscard-1.9.4/sudoEng.txt', 'r') as sha:
+with open('/Users/garytsai/Desktop/Fall 2015/Crypto/Portfolio/AllEng.txt', 'r') as sha:
 	hashed=sha.read()
 	hashed=hashed.split()
 
