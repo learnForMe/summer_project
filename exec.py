@@ -9,11 +9,11 @@ from add_column import add_column
 
 
 def exe():
-	time_to_exe= "22:00:00"
+	time_to_exe= "20:00:00"
 	backup1="10:00:00"
 	backup2="12:00:00"
 	backup3="15:00:00"
-	backup4="17:00:00"
+	backup4="18:00:00"
 	backup5="20:00:00"
 	#now = strftime("%Y-%m-%d %H:%M:%S")
 	while 1:
@@ -26,4 +26,3 @@ def exe():
 		if today == end_this_mon and now == time_to_exe:
 			email()
 			add_column()
-			
