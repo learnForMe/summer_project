@@ -89,28 +89,32 @@ def search_Student (x):
         
         print ("\n\tWelcome Back! "+ again + "\n")
 
-    randNum=random.randrange(10)
-
-    if (randNum) == 0:
-        os.system ('say %s. Did you just roll out of bed? You look like shit' % again)  # use for prank (aka April Foo)
-    elif (randNum)== 1:
-        os.system ('say %s. Your head is so big, you don’t have dreams you have movies. ' % again)
-    elif (randNum) == 2:
-        os.system ('say %s. I see you are having a bad day. Here is a straw, suck it up!' % again)
-    elif (randNum) == 3:
-         os.system ('say %s. Please do not study too hard. You will fail anyway' % again)
-    elif (randNum) == 4:
-         os.system ('say %s. I thought you were smart, Until you open your mouth.' % again)
-    elif (randNum) == 5:
-         os.system ('say %s. now eveyone will looks at you awkwardly' % again)
-    elif (randNum) == 6:
-         os.system ('say %s. Is ok to be a Trump supporter' % again)
-    elif (randNum) == 7:
-         os.system ('say %s. People like you are the reason we have middle fingers' % again)
-    elif (randNum)== 8:
-         os.system ('say %s. When your parent dropped you off at the school when you were little, they got a ticket for littering' % again)
-    elif (randNum) == 9:
-         os.system ('say %s. It’s not that I’m smarter than you, its just that you’re dumber than everyone else' % again)
+    if x == "CFD893A460":
+        os.system ('say Welcome Back %s' % again)
+    elif x == "CFD8AA9A20":
+        os.system ('say Hello Mr. President')
+    else:
+        randNum=random.randrange(10)
+        if (randNum) == 0:
+            os.system ('say %s. Did you just roll out of bed? You look like shit' % again)  # use for prank (aka April Foo)
+        elif (randNum)== 1:
+            os.system ('say %s. Your head is so big, you don’t have dreams you have movies. ' % again)
+        elif (randNum) == 2:
+            os.system ('say %s. I see you are having a bad day. Here is a straw, suck it up!' % again)
+        elif (randNum) == 3:
+            os.system ('say %s. Please do not study too hard. You will fail anyway' % again)
+        elif (randNum) == 4:
+            os.system ('say %s. I thought you were smart, Until you open your mouth.' % again)
+        elif (randNum) == 5:
+            os.system ('say %s. now eveyone will looks at you awkwardly' % again)
+        elif (randNum) == 6:
+            os.system ('say %s. Is ok to be a Trump supporter' % again)
+        elif (randNum) == 7:
+            os.system ('say %s. People like you are the reason we have middle fingers' % again)
+        elif (randNum)== 8:
+            os.system ('say %s. When your parent dropped you off at the school when you were little, they got a ticket for littering' % again)
+        elif (randNum) == 9:
+            os.system ('say %s. It’s not that I’m smarter than you, its just that you’re dumber than everyone else' % again)
     
 
 
