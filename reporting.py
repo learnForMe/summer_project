@@ -41,7 +41,7 @@ def logs (a,b):
 		new_row=curr_row+1
 		#sheet['%s%d' % (curr_col,new_row)] = a+ " " + b +" "+ time
 		sheet['%s%d' % (curr_col,new_row)] = time+">>> "+a+" "+b
-	print (column_to_add(min_col))
+	#print (column_to_add(min_col))
 	wb.save('report.xlsx')
 	#sprint (time)
 

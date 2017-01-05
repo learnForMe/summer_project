@@ -68,8 +68,8 @@ def search_Student (x):
         sheet['%s%d' % (col,insert_name)] =str(x)
         sheet['%s%d' % (col4,insert_name)] =first_time
         sheet['%s%d' % (col3,insert_name)] =str(student_email)
-        #logs(x,student_name)
-        #print (x)
+        logs(x,student_name)
+        print (x)
         wb.save('testing.xlsx')
     else:
         print ('\a')
@@ -84,6 +84,8 @@ def search_Student (x):
             sheet['%s%d' % (col3,cool)] =str(student_email)
             again = sheet.cell('%s%d' % (col2,cool)).value
             email = sheet.cell('%s%d' % (col3,cool)).value
+            logs(x,student_name)
+            print (x)
 
             wb.save('testing.xlsx')
         
