@@ -15,16 +15,12 @@ def column_to_add(col):
 	sheet =wb.get_sheet_by_name('Sheet')
 	sheet_max_row = sheet.max_row
 	cell_coord = col + str(sheet_max_row)
-	print (cell_coord)
-	print (sheet.cell(cell_coord).value)
+	#print (sheet.cell(cell_coord).value)
 	while sheet.cell(cell_coord).value == None:
 		sheet_max_row -= 1
 		cell_coord = col + str(sheet_max_row)
 	sheet_max_row += 1
 	return int(sheet_max_row)
-
-#then add variable data = 'xxx' to that cell
-
 
 def logs (a,b):
 	wb=load_workbook('report.xlsx',read_only = False, data_only = True)
@@ -47,6 +43,4 @@ def logs (a,b):
 	#print (column_to_add(curr_col))
 	wb.save('report.xlsx')
 	#sprint (time)
-
-logs ("hi", "you")
 

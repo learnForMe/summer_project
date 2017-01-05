@@ -20,7 +20,7 @@ def search_Student (x):
     wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
     worksheet= wb.get_sheet_names()
     wb.active
-    sheet = wb.get_sheet_by_name('Sheet1')
+    sheet = wb.get_sheet_by_name('Sheet')
     max_row = sheet.max_row
     insert_name=max_row+1
 
@@ -42,6 +42,7 @@ def search_Student (x):
             if data == str(x):
                 cell = str(cell)
                 cool=int(remove(cell))
+                name_report= sheet.cell('%s%d' % (col2,cool)).value
                 stop_by= sheet.cell('%s%d' % (col4,cool)).value
                 if stop_by == None:
                     stop_by = 0
@@ -50,7 +51,7 @@ def search_Student (x):
                 #print (sheet.cell('%s%d' % (col4,cool)).value)
                 wb.save('testing.xlsx')
                 count+=1
-              
+    logs(x,name_report)
     if count< 1:
         print ('\a\a\a\a\a\a')
         os.system ('clear')
@@ -68,7 +69,7 @@ def search_Student (x):
         sheet['%s%d' % (col,insert_name)] =str(x)
         sheet['%s%d' % (col4,insert_name)] =first_time
         sheet['%s%d' % (col3,insert_name)] =str(student_email)
-        #logs(x,student_name)
+        logs(x,student_name)
         #print (x)
         wb.save('testing.xlsx')
     else:
@@ -84,6 +85,8 @@ def search_Student (x):
             sheet['%s%d' % (col3,cool)] =str(student_email)
             again = sheet.cell('%s%d' % (col2,cool)).value
             email = sheet.cell('%s%d' % (col3,cool)).value
+            logs(x,student_name)
+            #print (x)
 
             wb.save('testing.xlsx')
         

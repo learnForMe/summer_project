@@ -39,7 +39,7 @@ from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
 from header import header
 from search_student import search_Student
-from art import art_schedule
+#from art import art_schedule
 from formular import formular
 from exec import exe
 import alert
@@ -98,7 +98,7 @@ os.system("clear")
 wb=load_workbook('testing.xlsx', data_only = True)
 wb.active
 worksheet= wb.get_sheet_names()
-sheet = wb.get_sheet_by_name('Sheet1')
+sheet = wb.get_sheet_by_name('Sheet')
 _thread.start_new_thread(exe,())
 
 
