@@ -19,7 +19,7 @@ def search_Student (x):
     wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
     worksheet= wb.get_sheet_names()
     wb.active
-    sheet = wb.get_sheet_by_name('Sheet')
+    sheet = wb.get_sheet_by_name('Sheet1')
     max_row = sheet.max_row
     insert_name=max_row+1
 

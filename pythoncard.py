@@ -54,7 +54,7 @@ class CardRequest(object):
     """
 
     def __init__(self, newcardonly=False, readers=None, cardType=None,
-        cardServiceClass=None, timeout=1):
+        cardServiceClass=None, timeout=None):
         """Construct new CardRequest.
 
         newcardonly:        if True, request a new card
@@ -96,7 +96,7 @@ os.system("clear")
 wb=load_workbook('testing.xlsx', data_only = True)
 wb.active
 worksheet= wb.get_sheet_names()
-sheet = wb.get_sheet_by_name('Sheet')
+sheet = wb.get_sheet_by_name('Sheet1')
 _thread.start_new_thread(exe,())
 
 
@@ -121,9 +121,6 @@ while __name__ == '__main__':
     if card == cardtype and length == word_len :
         header()
         search_Student(texting)
-        #print (alert.go)
-        #time.sleep(2.5)
-        #os.system ('clear')
         cs.connection.disconnect()
         formular()
 
