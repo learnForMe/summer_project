@@ -26,7 +26,6 @@ def add_column():
 	lastMonth = first - datetime.timedelta(days=1)
 	lastMonth= lastMonth.strftime("%B %Y")
 	next_month = "{:%B %Y}".format(datetime.date.today() + relativedelta.relativedelta(months=1))
-	#next_month= "{:%B %Y}".format(today + timedelta(mdays[today.month]))
 	month="{:%B %Y}".format(datetime.date.today())
 	#print (next_month)
 	#sheet['%s1' % curr_col] = month

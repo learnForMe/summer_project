@@ -98,7 +98,7 @@ os.system("clear")
 wb=load_workbook('testing.xlsx', data_only = True)
 wb.active
 worksheet= wb.get_sheet_names()
-sheet = wb.get_sheet_by_name('Sheet')
+sheet = wb.get_sheet_by_name('Sheet1')
 _thread.start_new_thread(exe,())
 
 
