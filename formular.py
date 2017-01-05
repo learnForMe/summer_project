@@ -13,7 +13,7 @@ def formular():
     wb=load_workbook('testing.xlsx',read_only = False, data_only = True)
     worksheet= wb.get_sheet_names()
     wb.active
-    sheet = wb.get_sheet_by_name('Sheet1')
+    sheet = wb.get_sheet_by_name('Sheet')
     next_month = "{:%B %Y}".format(datetime.date.today() + relativedelta.relativedelta(months=1))
     curr_col = sheet.max_column
     curr_col=get_column_letter(curr_col)
