@@ -15,8 +15,8 @@ def email():
 	#passw= passwd(hashed)
 	month="{:%B %Y}".format(datetime.date.today())
 	fromaddr = "johnjayveterans@gmail.com"
-	#toaddr = "yue.tsai@jjay.cuny.edu"
-	toaddr = ['rpusateri@jjay.cuny.edu', 'yue.tsai@jjay.cuny.edu', 'holland718@hotmail.com','bryan.williams@jjay.cuny.edu']
+	toaddr = "yue.tsai@jjay.cuny.edu"
+	#toaddr = ['rpusateri@jjay.cuny.edu', 'yue.tsai@jjay.cuny.edu', 'holland718@hotmail.com','bryan.williams@jjay.cuny.edu']
 	msg = MIMEMultipart()
 	msg['From'] = fromaddr
 	#msg['To'] = toaddr
@@ -26,8 +26,8 @@ def email():
 	msg.attach(MIMEText(body, 'plain'))
 	filename = "%s.xlsx" %month
 	#filename = "August.xlsx" 
-	attachment = open("/Users/johnjayveterans/Desktop/summer_project/testing.xlsx", "rb")
-	#attachment = open("/Users/garytsai/Desktop/rfid-reader-http/summer_project/testing.xlsx", "rb")
+	#attachment = open("/Users/johnjayveterans/Desktop/summer_project/testing.xlsx", "rb")
+	attachment = open("/Users/garytsai/Desktop/rfid-reader-http/summer_project/testing.xlsx", "rb")
 	part = MIMEBase('application', 'octet-stream')
 	part.set_payload((attachment).read())
 	encoders.encode_base64(part)
