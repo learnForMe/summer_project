@@ -72,7 +72,7 @@ def search_Student (x):
         #print (x)
         wb.save('testing.xlsx')
     else:
-        #print ('\a')
+        print ('\a')
         again=sheet.cell('%s%d' % (col2,cool)).value
         email=sheet.cell('%s%d' % (col3,cool)).value
         if again == None or  email == None or again == "None" or  email == "None":
@@ -89,7 +89,8 @@ def search_Student (x):
         
         print ("\n\tWelcome Back! "+ again + "\n")
 
-    if x == "CFD893A460":
+    
+    '''if x == "CFD893A460":
         os.system ('say Welcome Back %s' % again)
     elif x == "CFD8AA9A20":
         os.system ('say Hello Mr. President')
@@ -124,16 +125,12 @@ def search_Student (x):
         elif (randNum) == 13:
             os.system ('say %s. Are you a keyboard? because you are just my type' % again)
         elif (randNum) == 14:
-            os.system ('say %s. there is nothing about me that is micro or soft' % again)
+            os.system ('say %s. there is nothing about me that is micro. or soft' % again)
         elif (randNum) == 15:
             os.system ('say %s. if i freeze, it is not a computer virus. I was just stunned by your look' % again)
         elif (randNum) == 16:
             os.system ('say %s. i want to squeeze my hardware into your software without having to worry about getting a virus' % again)
-
-
-
-    
-
+            '''
 
 
 
