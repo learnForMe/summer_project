@@ -7,6 +7,7 @@ from openpyxl.compat import range
 from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
+from dateutil import relativedelta
 
 def logs (a,b):
 	wb=load_workbook('report.xlsx',read_only = False, data_only = True)
