@@ -25,9 +25,6 @@ def search_Student (x):
     insert_name=max_row+1
 
     max_col=sheet.max_column
-    #if max_col != 4:
-        #max_col=4
-
     col=get_column_letter(1)# convert column number to letter and use for first column (ID card data)
     col2=get_column_letter(2)# use for second column (Student name)
     col3=get_column_letter(3)# use for third column (Student's email)
@@ -38,11 +35,9 @@ def search_Student (x):
     for row in sheet.iter_rows():
         for cell in row:
             data = cell.value
-            
             if data == str(x):
                 cell = str(cell)
                 cool=int(remove(cell))
-                name_report= sheet.cell('%s%d' % (col2,cool)).value
                 stop_by= sheet.cell('%s%d' % (col4,cool)).value
                 if stop_by == None:
                     stop_by = 0
@@ -51,31 +46,25 @@ def search_Student (x):
                 #print (sheet.cell('%s%d' % (col4,cool)).value)
                 wb.save('testing.xlsx')
                 count+=1
-    logs(x,name_report)
-    if count< 1:
+                again=sheet.cell('%s%d' % (col2,cool)).value
+                email=sheet.cell('%s%d' % (col3,cool)).value            
+    if count< 1 :
         print ('\a\a\a\a\a\a')
         os.system ('clear')
         #os.system ('echo "New Student"')
-        print ("\t****** NEW STUDENT ******\n")
-        #print ("This Student is NEW")
-        #student_name=input("Enter Name -> ")
-        #student_email=input("Enter Student's email -> ")
-        #student_name= input("Enter Name -> ")
+        print ("\t\t****** NEW STUDENT ******\n")
         student_name , student_email =prompt_with_timeout()
-        #print (student_name + " added to database")
-        #print(student_email + " added to database")
         
         sheet['%s%d' % (col2,insert_name)] =str(student_name)
         sheet['%s%d' % (col,insert_name)] =str(x)
         sheet['%s%d' % (col4,insert_name)] =first_time
         sheet['%s%d' % (col3,insert_name)] =str(student_email)
         logs(x,student_name)
-        #print (x)
         wb.save('testing.xlsx')
     else:
         print ('\a')
-        again=sheet.cell('%s%d' % (col2,cool)).value
-        email=sheet.cell('%s%d' % (col3,cool)).value
+        logs(x,again)
+        
         if again == None or  email == None or again == "None" or  email == "None":
             print ('\a\a\a\a\a\a')
             #student_name=input("Enter Name -> ")
@@ -85,12 +74,11 @@ def search_Student (x):
             sheet['%s%d' % (col3,cool)] =str(student_email)
             again = sheet.cell('%s%d' % (col2,cool)).value
             email = sheet.cell('%s%d' % (col3,cool)).value
-            logs(x,student_name)
+            
             #print (x)
-
             wb.save('testing.xlsx')
         
-        print ("\n\tWelcome Back! "+ again + "\n")
+        print ("\n\tWelcome Back! ",again,"\n")
 
     
     '''if x == "CFD893A460":
