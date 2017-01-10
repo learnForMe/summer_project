@@ -36,10 +36,16 @@ def logs (a,b):
 	sheet['%s1' % curr_col] = this_month
 	sheet.column_dimensions['%s' %  curr_col].width = 50
 	time=datetime.datetime.now().strftime("%d %H:%M")
-	if a != None:
+	if b != None:
 		new_row=curr_row+1
 		#sheet['%s%d' % (curr_col,new_row)] = a+ " " + b +" "+ time
-		sheet['%s%d' % (curr_col,column_to_add(curr_col))] = time+">>> "+a+" "+b
+		sheet['%s%d' % (curr_col,column_to_add(curr_col))] = time+">>> "+a+"   "+b
+		
+	else:
+		new_row=curr_row+1
+		b = " "
+		sheet['%s%d' % (curr_col,column_to_add(curr_col))] = time+">>> "+a+"   "+b
+		
 	#print (column_to_add(curr_col))
 	wb.save('report.xlsx')
 	#sprint (time)

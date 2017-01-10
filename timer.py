@@ -16,13 +16,14 @@ def prompt_with_timeout():
     print("No Name or Email was logged")
     n = ""
     e = ""
-    #print (n)
-    #print (e)
-    #print (n , " and " , e ," added to database")
+    
   except KeyboardInterrupt:
-    n= input("Student's Name -> ")
+    n = input("Student's Name -> ")
     e = input("Student's Email -> ")
-    print (n + " and " + e +" added to database")
+    if n == "" or  e == "" or n == "None" or  e == "None":
+      print("No Name or Email was logged")
+    else:
+      print (n + " and " + e +" added to database")
   return n, e
 
 
