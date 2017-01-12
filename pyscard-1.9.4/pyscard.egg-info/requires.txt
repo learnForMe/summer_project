@@ -1,7 +1,0 @@
-
-
-[Pyro]
-Pyro
-
-[Gui]
-wxPython
