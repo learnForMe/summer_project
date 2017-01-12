@@ -11,10 +11,10 @@ from email import encoders
 
 
 def email():
-	hashed="3fde674e736ee4681b82ed8df2c9ee60e4f58391814aaf8908f820257ca94d59cd730d865e38c1e6e79e6a7e8dc10afaddb83c170bd1e952cfd44160b9df9eef"
+	hashed="43657166f4c72d25ef02dd2b82afb72b58860f1aeda068a45c2a7353962fb57ffa98db5231457318d6ffae8d6bcd56540f2fd871e3053486edd1e305c571af19"
 	#passw= passwd(hashed)
 	month="{:%B %Y}".format(datetime.date.today())
-	fromaddr = "johnjayveterans@gmail.com"
+	fromaddr = "reportandlogs@gmail.com"
 	toaddr = "yue.tsai@jjay.cuny.edu"
 	#toaddr = ['rpusateri@jjay.cuny.edu', 'yue.tsai@jjay.cuny.edu', 'holland718@hotmail.com','bryan.williams@jjay.cuny.edu']
 	msg = MIMEMultipart()
@@ -26,8 +26,8 @@ def email():
 	msg.attach(MIMEText(body, 'plain'))
 	filename = "%s.xlsx" %month
 	#filename = "August.xlsx" 
-	#attachment = open("/Users/johnjayveterans/Desktop/summer_project/testing.xlsx", "rb")
-	attachment = open("/Users/garytsai/Desktop/rfid-reader-http/summer_project/testing.xlsx", "rb")
+	attachment = open("/Users/johnjayveterans/Desktop/summer_project/testing.xlsx", "rb")
+	#attachment = open("/Users/garytsai/Desktop/rfid-reader-http/summer_project/testing.xlsx", "rb")
 	part = MIMEBase('application', 'octet-stream')
 	part.set_payload((attachment).read())
 	encoders.encode_base64(part)

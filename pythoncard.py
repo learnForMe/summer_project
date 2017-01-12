@@ -55,7 +55,7 @@ class CardRequest(object):
     kind of smart card an application is waited for.
     """
 
-    def __init__(self, newcardonly=False, readers=None, cardType=None,
+    def __init__(self, newcardonly=True, readers=None, cardType=None,
         cardServiceClass=None, timeout=None):
         """Construct new CardRequest.
 
@@ -133,5 +133,5 @@ while __name__ == '__main__':
         print (alert.stop)
         os.system ('say Try Again')
 
-    
+ 
    
