@@ -114,7 +114,7 @@ class PCSCCardRequest(AbstractCardRequest):
         # the end of the time-out by setting the evt event
         evt = threading.Event()
         if INFINITE == self.timeout:
-            timertimeout = 1
+            timertimeout = 0
         else:
             timertimeout = self.timeout
         timer = threading.Timer(
@@ -266,7 +266,7 @@ class PCSCCardRequest(AbstractCardRequest):
 
         # for non infinite timeout, a timer will signal the end of the time-out
         if INFINITE == self.timeout:
-            timertimeout = 1
+            timertimeout = 0
         else:
             timertimeout = self.timeout
         timer = threading.Timer(
