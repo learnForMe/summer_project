@@ -9,6 +9,7 @@ from openpyxl.utils import coordinate_from_string
 from timer import prompt_with_timeout
 from reporting import logs
 import random
+from timesheet import register
 
 
 def remove(y):
@@ -60,6 +61,7 @@ def search_Student (x):
         sheet['%s%d' % (col4,insert_name)] =first_time
         sheet['%s%d' % (col3,insert_name)] =str(student_email)
         logs(x,student_name)
+        register (x, student_name)
         wb.save('testing.xlsx')
     else:
         print ('\a')
