@@ -15,7 +15,7 @@ def email():
 	#passw= passwd(hashed)
 	month="{:%B %Y}".format(datetime.date.today())
 	fromaddr = "reportandlogs@gmail.com"
-	toaddr = "yue.tsai@jjay.cuny.edu"
+	toaddr = ['yue.tsai@jjay.cuny.edu']
 	#toaddr = ['rpusateri@jjay.cuny.edu', 'yue.tsai@jjay.cuny.edu', 'holland718@hotmail.com','bryan.williams@jjay.cuny.edu']
 	msg = MIMEMultipart()
 	msg['From'] = fromaddr
