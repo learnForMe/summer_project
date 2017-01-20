@@ -20,8 +20,15 @@ class timesheet:
 		sheet =wb.get_sheet_by_name('Sheet')
 		sheet= wb.active
 		#sheet["a1"]= str(self.register())
-		next_row= sheet.max_row+1
-		sheet["a%d"%next_row]= self.clockin()
+		next_row= sheet.max_column
+		#print(self.column_to_add('a'))
+		#print(self.column_to_add('b'))
+		
+		if self.ids == sheet.cell("a2").value:
+			sheet["a%d"% self.column_to_add("a")]= self.clockin()
+		elif self.ids == sheet.cell("b2").value:
+			sheet["b%d"% self. column_to_add("b")]= self.clockin()
+		
 		wb.save("clocking.xlsx")
 	'''
 	def register(self):
@@ -43,24 +50,41 @@ class timesheet:
 		wb = openpyxl.load_workbook("clocking.xlsx")
 		sheet =wb.get_sheet_by_name('Sheet')
 		sheet= wb.active
-		count=1
-		#x= input("Name for first Work-Study ->")
-		#self.name= x
-		#sheet["%s1"% get_column_letter(count)]= self.name
-		while count <= 4:
-			if sheet.cell('%s1'% get_column_letter(count)).value==None:
-				x= input("Name for first Work-Study ->")
-				self.name= x
-				sheet["%s1"% get_column_letter(count)]= x
-				sheet["%s2"% get_column_letter(count)]= y
-			count = count +1
+		
+		self.name = x
+		self.ids= y
+		#while count <= 4:
 
+		if sheet.cell('%s1'% get_column_letter(1)).value==None:
+			sheet["%s1"% get_column_letter(1)]= self.name
+			sheet["%s2"% get_column_letter(1)]= self.ids
+		elif sheet.cell('%s1'% get_column_letter(2)).value==None and self.ids != sheet.cell("a2").value:
+			sheet["%s1"% get_column_letter(2)]= self.name
+			sheet["%s2"% get_column_letter(2)]= self.ids
+		elif sheet.cell('%s1'% get_column_letter(3)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value:
+			sheet["%s1"% get_column_letter(3)]= self.name
+			sheet["%s2"% get_column_letter(3)]= self.ids
+		elif sheet.cell('%s1'% get_column_letter(4)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value:
+			sheet["%s1"% get_column_letter(4)]= self.name
+			sheet["%s2"% get_column_letter(4)]= self.ids
 		wb.save("clocking.xlsx")
 		
-		
+	
+	def column_to_add(self,col): 
+		wb = openpyxl.load_workbook("clocking.xlsx")
+		sheet =wb.get_sheet_by_name('Sheet')
+		sheet= wb.active
+		sheet_max_row = sheet.max_row
+		cell_coord = col + str(sheet_max_row)
+		#print (sheet.cell(cell_coord).value)
+		while sheet.cell(cell_coord).value == None:
+			sheet_max_row -= 1
+			cell_coord = col + str(sheet_max_row)
+		sheet_max_row += 1
+		return int(sheet_max_row)	
 
 	#def grep(self,c,d):
-
+'''
 def main():
 	
 	first=timesheet()
@@ -71,4 +95,4 @@ def main():
 
 if __name__=='__main__':
 	main()
-
+'''
