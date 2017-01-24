@@ -68,7 +68,7 @@ def search_Student (x):
     else:
         print ('\a')
         logs(x,again)
-       # timing.register(again, x)
+        #timing.register(again, x)
         #timing.excel()
         if again == None or  email == None or again == "None" or  email == "None":
             print ('\a\a\a\a\a\a')
