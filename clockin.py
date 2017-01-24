@@ -19,16 +19,30 @@ class timesheet:
 		wb = openpyxl.load_workbook("clocking.xlsx")
 		sheet =wb.get_sheet_by_name('Sheet')
 		sheet= wb.active
+		sheet.column_dimensions['a'].width = 25
+		sheet.column_dimensions['b'].width = 25
+		sheet.column_dimensions['c'].width = 25
+		sheet.column_dimensions['d'].width = 25
 		#sheet["a1"]= str(self.register())
 		next_row= sheet.max_column
 		#print(self.column_to_add('a'))
 		#print(self.column_to_add('b'))
 		
 		if self.ids == sheet.cell("a2").value:
-			sheet["a%d"% self.column_to_add("a")]= self.clockin()
+			if "IN" in sheet.cell("a%d" % (self.column_to_add("a")-1)).value:
+				sheet["a%d"% self.column_to_add("a")]= "OUT -> " + self.clockin()
+			else:
+				sheet["a%d"% self.column_to_add("a")]= "IN -> " + self.clockin()
 		elif self.ids == sheet.cell("b2").value:
-			sheet["b%d"% self. column_to_add("b")]= self.clockin()
-		
+			if "IN" in sheet.cell("b%d" % (self.column_to_add("b")-1)).value:
+				sheet["b%d"% self.column_to_add("b")]= "OUT -> " + self.clockin()
+			else:
+				sheet["b%d"% self.column_to_add("b")]= "IN -> " + self.clockin()
+			#sheet["b%d"% self. column_to_add("b")]= self.clockin()
+		elif self.ids == sheet.cell("c2").value:
+			sheet["c%d"% self. column_to_add("c")]= self.clockin()
+		elif self.ids == sheet.cell("d2").value:
+			sheet["d%d"% self. column_to_add("d")]= self.clockin()		
 		wb.save("clocking.xlsx")
 	'''
 	def register(self):
