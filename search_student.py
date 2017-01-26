@@ -62,14 +62,14 @@ def search_Student (x):
         sheet['%s%d' % (col4,insert_name)] =first_time
         sheet['%s%d' % (col3,insert_name)] =str(student_email)
         logs(x,student_name)
-        #timing.register(again, x)
-        #timing.excel()
+       # timing.register(again, x)
+        timing.excel(x)
         wb.save('testing.xlsx')
     else:
         print ('\a')
         logs(x,again)
         #timing.register(again, x)
-        #timing.excel()
+        timing.excel(x)
         if again == None or  email == None or again == "None" or  email == "None":
             print ('\a\a\a\a\a\a')
             #student_name=input("Enter Name -> ")
