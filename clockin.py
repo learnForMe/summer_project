@@ -15,18 +15,17 @@ class timesheet:
 		
 		return time
 
-	def excel(self):
+	def excel(self, a):
 		wb = openpyxl.load_workbook("clocking.xlsx")
 		sheet =wb.get_sheet_by_name('Sheet')
 		sheet= wb.active
-		sheet.column_dimensions['a'].width = 25
-		sheet.column_dimensions['b'].width = 25
-		sheet.column_dimensions['c'].width = 25
-		sheet.column_dimensions['d'].width = 25
+		sheet.column_dimensions['a'].width = 40
+		sheet.column_dimensions['b'].width = 40
+		sheet.column_dimensions['c'].width = 40
+		sheet.column_dimensions['d'].width = 40
 		#sheet["a1"]= str(self.register())
 		next_row= sheet.max_column
-		#print(self.column_to_add('a'))
-		#print(self.column_to_add('b'))
+		self.ids = a
 		
 		if self.ids == sheet.cell("a2").value:
 			if "IN" in sheet.cell("a%d" % (self.column_to_add("a")-1)).value:
@@ -40,26 +39,19 @@ class timesheet:
 				sheet["b%d"% self.column_to_add("b")]= "IN -> " + self.clockin()
 			#sheet["b%d"% self. column_to_add("b")]= self.clockin()
 		elif self.ids == sheet.cell("c2").value:
-			sheet["c%d"% self. column_to_add("c")]= self.clockin()
+			if "IN" in sheet.cell("c%d" % (self.column_to_add("c")-1)).value:
+				sheet["c%d"% self.column_to_add("c")]= "OUT -> " + self.clockin()
+			else:
+				sheet["c%d"% self.column_to_add("c")]= "IN -> " + self.clockin()
+			#sheet["c%d"% self. column_to_add("c")]= self.clockin()
 		elif self.ids == sheet.cell("d2").value:
-			sheet["d%d"% self. column_to_add("d")]= self.clockin()		
+			if "IN" in sheet.cell("d%d" % (self.column_to_add("d")-1)).value:
+				sheet["d%d"% self.column_to_add("d")]= "OUT -> " + self.clockin()
+			else:
+				sheet["d%d"% self.column_to_add("d")]= "IN -> " + self.clockin()
+			#sheet["d%d"% self. column_to_add("d")]= self.clockin()		
 		wb.save("clocking.xlsx")
-	'''
-	def register(self):
-		wb = openpyxl.load_workbook("clocking.xlsx")
-		sheet =wb.get_sheet_by_name('Sheet')
-		sheet= wb.active
-		count=1
-		#x= input("Name for first Work-Study ->")
-		#self.name= x
-		#sheet["%s1"% get_column_letter(count)]= self.name
-		if sheet.cell('%s1'% get_column_letter(count)).value==None:
-			x= input("Name for first Work-Study ->")
-			self.name= x
-			sheet["%s1"% get_column_letter(count)]= self.name
 
-		wb.save("clocking.xlsx")
-		'''
 	def register(self,x,y):
 		wb = openpyxl.load_workbook("clocking.xlsx")
 		sheet =wb.get_sheet_by_name('Sheet')
