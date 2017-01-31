@@ -70,9 +70,21 @@ class timesheet:
 		elif sheet.cell('%s1'% get_column_letter(3)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value:
 			sheet["%s1"% get_column_letter(3)]= self.name
 			sheet["%s2"% get_column_letter(3)]= self.ids
-		elif sheet.cell('%s1'% get_column_letter(4)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value:
+		elif sheet.cell('%s1'% get_column_letter(4)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value and self.ids != sheet.cell("d2").value:
 			sheet["%s1"% get_column_letter(4)]= self.name
 			sheet["%s2"% get_column_letter(4)]= self.ids
+		elif sheet.cell('%s1'% get_column_letter(5)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value  and self.ids != sheet.cell("d2").value and self.ids != sheet.cell("e2").value:
+			sheet["%s1"% get_column_letter(5)]= self.name
+			sheet["%s2"% get_column_letter(5)]= self.ids
+		elif sheet.cell('%s1'% get_column_letter(6)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value and self.ids != sheet.cell("d2").value and self.ids != sheet.cell("e2").value and self.ids != sheet.cell("f2").value:
+			sheet["%s1"% get_column_letter(6)]= self.name
+			sheet["%s2"% get_column_letter(6)]= self.ids
+		elif sheet.cell('%s1'% get_column_letter(7)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value and self.ids != sheet.cell("d2").value and self.ids != sheet.cell("e2").value and self.ids != sheet.cell("f2").value and self.ids != sheet.cell("g2").value: 
+			sheet["%s1"% get_column_letter(7)]= self.name
+			sheet["%s2"% get_column_letter(7)]= self.ids
+		elif sheet.cell('%s1'% get_column_letter(8)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value and self.ids != sheet.cell("d2").value and self.ids != sheet.cell("e2").value and self.ids != sheet.cell("f2").value and self.ids != sheet.cell("g2").value and self.ids != sheet.cell("h2").value:
+			sheet["%s1"% get_column_letter(8)]= self.name
+			sheet["%s2"% get_column_letter(8)]= self.ids
 		wb.save("clocking.xlsx")
 		
 	
