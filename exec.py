@@ -25,7 +25,7 @@ def exe():
 		time.sleep(1)
 		if now == backup1 or now == backup2 or now == backup3 or now == backup4 or now == backup5:
 			back_up()
-		if today == today and now == time_to_exe:
+		if today == end_this_mon and now == time_to_exe:
 			email()
-			#add_column()
-			#increase_col()
+			add_column()
+			increase_col()
