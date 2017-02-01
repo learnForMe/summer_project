@@ -49,7 +49,27 @@ class timesheet:
 				sheet["d%d"% self.column_to_add("d")]= "OUT -> " + self.clockin()
 			else:
 				sheet["d%d"% self.column_to_add("d")]= "IN -> " + self.clockin()
-			#sheet["d%d"% self. column_to_add("d")]= self.clockin()		
+			#sheet["d%d"% self. column_to_add("d")]= self.clockin()	
+		elif self.ids == sheet.cell("e2").value:
+			if "IN" in sheet.cell("e%d" % (self.column_to_add("e")-1)).value:
+				sheet["e%d"% self.column_to_add("e")]= "OUT -> " + self.clockin()
+			else:
+				sheet["e%d"% self.column_to_add("e")]= "IN -> " + self.clockin()
+		elif self.ids == sheet.cell("f2").value:
+			if "IN" in sheet.cell("f%d" % (self.column_to_add("f")-1)).value:
+				sheet["f%d"% self.column_to_add("f")]= "OUT -> " + self.clockin()
+			else:
+				sheet["f%d"% self.column_to_add("f")]= "IN -> " + self.clockin()
+		elif self.ids == sheet.cell("g2").value:
+			if "IN" in sheet.cell("g%d" % (self.column_to_add("g")-1)).value:
+				sheet["g%d"% self.column_to_add("g")]= "OUT -> " + self.clockin()
+			else:
+				sheet["g%d"% self.column_to_add("g")]= "IN -> " + self.clockin()
+		elif self.ids == sheet.cell("h2").value:
+			if "IN" in sheet.cell("h%d" % (self.column_to_add("h")-1)).value:
+				sheet["h%d"% self.column_to_add("h")]= "OUT -> " + self.clockin()
+			else:
+				sheet["h%d"% self.column_to_add("h")]= "IN -> " + self.clockin()		
 		wb.save("clocking.xlsx")
 
 	def register(self,x,y):
