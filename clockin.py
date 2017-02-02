@@ -23,6 +23,10 @@ class timesheet:
 		sheet.column_dimensions['b'].width = 40
 		sheet.column_dimensions['c'].width = 40
 		sheet.column_dimensions['d'].width = 40
+		sheet.column_dimensions['e'].width = 40
+		sheet.column_dimensions['f'].width = 40
+		sheet.column_dimensions['g'].width = 40
+		sheet.column_dimensions['h'].width = 40
 		#sheet["a1"]= str(self.register())
 		next_row= sheet.max_column
 		self.ids = a
