@@ -41,7 +41,8 @@ from header import header
 from search_student import search_Student
 #from art import art_schedule
 from formular import formular
-#from exec import exe
+from exec import exe
+from incre_col import increase_col
 import alert
 import re
 import os
@@ -99,7 +100,8 @@ wb=load_workbook('testing.xlsx', data_only = True)
 wb.active
 worksheet= wb.get_sheet_names()
 sheet = wb.get_sheet_by_name('Sheet')
-#_thread.start_new_thread(exe,())
+_thread.start_new_thread(exe,())
+_thread.start_new_thread(increase_col,())
 
 
 while __name__ == '__main__':
