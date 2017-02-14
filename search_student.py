@@ -62,7 +62,7 @@ def search_Student (x):
         sheet['%s%d' % (col4,insert_name)] =first_time
         sheet['%s%d' % (col3,insert_name)] =str(student_email)
         logs(x,student_name)
-        timing.register(again, x)
+        timing.register(student_name, x)
         timing.excel(x)
         wb.save('testing.xlsx')
     else:
