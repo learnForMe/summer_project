@@ -50,12 +50,13 @@ class timesheet:
 			else:
 				sheet["d%d"% self.column_to_add("d")]= "IN -> " + self.clockin()
 			#sheet["d%d"% self. column_to_add("d")]= self.clockin()	
-			'''
+			
 		elif self.ids == sheet.cell("e2").value:
 			if "IN" in sheet.cell("e%d" % (self.column_to_add("e")-1)).value:
 				sheet["e%d"% self.column_to_add("e")]= "OUT -> " + self.clockin()
 			else:
 				sheet["e%d"% self.column_to_add("e")]= "IN -> " + self.clockin()
+			'''
 		elif self.ids == sheet.cell("f2").value:
 			if "IN" in sheet.cell("f%d" % (self.column_to_add("f")-1)).value:
 				sheet["f%d"% self.column_to_add("f")]= "OUT -> " + self.clockin()
@@ -95,10 +96,11 @@ class timesheet:
 		elif sheet.cell('%s1'% get_column_letter(4)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value and self.ids != sheet.cell("d2").value:
 			sheet["%s1"% get_column_letter(4)]= self.name
 			sheet["%s2"% get_column_letter(4)]= self.ids
-			'''
+			
 		elif sheet.cell('%s1'% get_column_letter(5)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value  and self.ids != sheet.cell("d2").value and self.ids != sheet.cell("e2").value:
 			sheet["%s1"% get_column_letter(5)]= self.name
 			sheet["%s2"% get_column_letter(5)]= self.ids
+			'''
 		elif sheet.cell('%s1'% get_column_letter(6)).value==None and self.ids != sheet.cell("a2").value and self.ids != sheet.cell("b2").value and self.ids != sheet.cell("c2").value and self.ids != sheet.cell("d2").value and self.ids != sheet.cell("e2").value and self.ids != sheet.cell("f2").value:
 			sheet["%s1"% get_column_letter(6)]= self.name
 			sheet["%s2"% get_column_letter(6)]= self.ids
