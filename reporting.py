@@ -8,7 +8,7 @@ from openpyxl.utils import get_column_letter, column_index_from_string
 from openpyxl.utils import coordinate_from_string
 from openpyxl.styles import Font
 from dateutil import relativedelta
-
+from incre_col import increase_col
 
 def column_to_add(col): 
 	wb=load_workbook('report.xlsx',read_only = False, data_only = True)

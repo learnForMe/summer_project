@@ -28,4 +28,5 @@ def exe():
 		if today == end_this_mon and now == time_to_exe:
 			email()
 			add_column()
+			increase_col()
 			
