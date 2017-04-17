@@ -11,12 +11,12 @@ from email import encoders
 
 
 def email():
-	hashed="43657166f4c72d25ef02dd2b82afb72b58860f1aeda068a45c2a7353962fb57ffa98db5231457318d6ffae8d6bcd56540f2fd871e3053486edd1e305c571af19"
+	hashed="3fde674e736ee4681b82ed8df2c9ee60e4f58391814aaf8908f820257ca94d59cd730d865e38c1e6e79e6a7e8dc10afaddb83c170bd1e952cfd44160b9df9eef"
 	#passw= passwd(hashed)
 	month="{:%B %Y}".format(datetime.date.today())
 	fromaddr = "reportandlogs@gmail.com"
 	toaddr = ['yue.tsai@jjay.cuny.edu']
-	#toaddr = ['rpusateri@jjay.cuny.edu', 'yue.tsai@jjay.cuny.edu', 'holland718@hotmail.com','bryan.williams@jjay.cuny.edu']
+	#toaddr = ['rpusateri@jjay.cuny.edu', 'yue.tsai@jjay.cuny.edu', 'holland718@hotmail.com']
 	msg = MIMEMultipart()
 	msg['From'] = fromaddr
 	#msg['To'] = toaddr
